@@ -32,14 +32,15 @@ module VCAP::CloudController
 
         def found_instance_stats_hash(index, stats)
           {
-            type:       @type,
-            index:      index,
-            state:      stats[:state],
-            host:       stats[:stats][:host],
-            uptime:     stats[:stats][:uptime],
-            mem_quota:  stats[:stats][:mem_quota],
-            disk_quota: stats[:stats][:disk_quota],
-            fds_quota:  stats[:stats][:fds_quota],
+            type:        @type,
+            index:       index,
+            instance_id: stats[:stats][:instance_id],
+            state:       stats[:state],
+            host:        stats[:stats][:host],
+            uptime:      stats[:stats][:uptime],
+            mem_quota:   stats[:stats][:mem_quota],
+            disk_quota:  stats[:stats][:disk_quota],
+            fds_quota:   stats[:stats][:fds_quota],
             isolation_segment: stats[:isolation_segment],
             details: stats[:details]
           }.tap do |presented_stats|

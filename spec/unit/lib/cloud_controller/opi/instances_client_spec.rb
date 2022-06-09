@@ -77,6 +77,13 @@ RSpec.describe(OPI::InstancesClient) do
       expect(actual_lrp.placement_error).to eq('')
     end
 
+    # Eirini doesn't currently support ActualLRP instance guids
+    it 'provides an empty instance_guid value' do
+      actual_lrp = actual_lrps.first
+      expect(actual_lrp).to respond_to(:actual_lrp_instance_key)
+      expect(actual_lrp.actual_lrp_instance_key.instance_guid).to eq('')
+    end
+
     context 'when having multiple actual LRPs' do
       let(:response_body) do
         {
@@ -189,7 +196,7 @@ RSpec.describe(OPI::InstancesClient) do
   end
 
   context '#desired_lrp_instance' do
-    it 'should return a DesiredLRP with a placeholder PlacmentTags' do
+    it 'should return a DesiredLRP with a placeholder PlacementTags' do
       desired_lrp = client.desired_lrp_instance(process)
       expect(desired_lrp.PlacementTags.first).to eq('placeholder')
     end

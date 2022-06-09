@@ -12,6 +12,7 @@ module OPI
 
     LRP_INSTANCES_RETRIES = 5
     ActualLRPKey = Struct.new(:index, :process_guid)
+    ActualLRPInstanceKey = Struct.new(:instance_guid)
     ActualLRPNetInfo = Struct.new(:address, :ports)
     PortMapping = Struct.new(:container_port, :host_port)
     DesiredLRP = Struct.new(:PlacementTags, :metric_tags)
@@ -23,10 +24,11 @@ module OPI
     end
 
     class ActualLRP
-      attr_reader :actual_lrp_key, :state, :since, :placement_error, :actual_lrp_net_info
+      attr_reader :actual_lrp_key, :actual_lrp_instance_key, :state, :since, :placement_error, :actual_lrp_net_info
 
       def initialize(instance, process_guid)
         @actual_lrp_key = ActualLRPKey.new(instance['index'], process_guid)
+        @actual_lrp_instance_key = ActualLRPInstanceKey.new('')
         @state = instance['state']
         @since = instance['since']
         @placement_error = instance['placement_error']

@@ -8,9 +8,10 @@ Example process stats object
 ```
 
 Name | Type | Description
----- | ---- | -----------
+---- | -- | -----------
 **type** | _string_ | Process type; a unique identifier for processes belonging to an app
 **index** | _integer_ | The zero-based index of running instances
+**instance_id** | _string_ | The unique identifier of the instance
 **state** | _string_ | The state of the instance; valid values are `RUNNING`, `CRASHED`, `STARTING`, `DOWN`
 **usage** | _object_ | Object containing actual usage data for the instance; the value is `{}` when usage data is unavailable
 **usage.time** | _[timestamp](#timestamps)_ | The time when the usage was requested

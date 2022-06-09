@@ -62,6 +62,7 @@ module VCAP::CloudController::Presenters::V3
               name: process.name,
               uris: process.uris,
               host: 'myhost',
+              instance_id: 'instance-a',
               net_info: net_info_1,
               uptime: 12345,
               mem_quota:  process[:memory] * 1024 * 1024,
@@ -82,6 +83,7 @@ module VCAP::CloudController::Presenters::V3
               name: process.name,
               uris: process.uris,
               host: 'toast',
+              instance_id: 'instance-b',
               net_info: net_info_2,
               uptime: 42,
               mem_quota:  process[:memory] * 1024 * 1024,
@@ -109,6 +111,7 @@ module VCAP::CloudController::Presenters::V3
         expect(result[0][:type]).to eq(process.type)
         expect(result[0][:index]).to eq(0)
         expect(result[0][:state]).to eq('RUNNING')
+        expect(result[0][:instance_id]).to eq('instance-a')
         expect(result[0][:details]).to eq(nil)
         expect(result[0][:isolation_segment]).to eq('hecka-compliant')
         expect(result[0][:host]).to eq('myhost')
@@ -125,6 +128,7 @@ module VCAP::CloudController::Presenters::V3
         expect(result[1][:type]).to eq(process.type)
         expect(result[1][:index]).to eq(1)
         expect(result[1][:state]).to eq('CRASHED')
+        expect(result[1][:instance_id]).to eq('instance-b')
         expect(result[1][:details]).to eq('some-details')
         expect(result[1][:isolation_segment]).to eq(nil)
         expect(result[1][:host]).to eq('toast')
@@ -183,6 +187,7 @@ module VCAP::CloudController::Presenters::V3
           expect(result[0][:type]).to eq(process.type)
           expect(result[0][:index]).to eq(0)
           expect(result[0][:state]).to eq('RUNNING')
+          expect(result[0][:instance_id]).to eq('instance-a')
           expect(result[0][:details]).to eq(nil)
           expect(result[0][:isolation_segment]).to eq('hecka-compliant')
           expect(result[0][:host]).to eq('myhost')
@@ -208,6 +213,7 @@ module VCAP::CloudController::Presenters::V3
                 name: process.name,
                 uris: process.uris,
                 host: 'myhost',
+                instance_id: 'instance-a',
                 net_info: net_info_1,
                 uptime: 12345,
                 fds_quota: process.file_descriptors,
@@ -223,6 +229,7 @@ module VCAP::CloudController::Presenters::V3
           expect(result[0][:type]).to eq(process.type)
           expect(result[0][:index]).to eq(0)
           expect(result[0][:state]).to eq('RUNNING')
+          expect(result[0][:instance_id]).to eq('instance-a')
           expect(result[0][:details]).to eq(nil)
           expect(result[0][:isolation_segment]).to eq('hecka-compliant')
           expect(result[0][:host]).to eq('myhost')

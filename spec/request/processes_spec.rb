@@ -490,6 +490,7 @@ RSpec.describe 'Processes' do
             name: process.name,
             uris: process.uris,
             host: 'toast',
+            instance_id: 'some-diego-instance-id',
             net_info: net_info_1,
             uptime: 12345,
             mem_quota:  process[:memory] * 1024 * 1024,
@@ -515,6 +516,7 @@ RSpec.describe 'Processes' do
           'type'           => 'worker',
           'index'          => 0,
           'state'          => 'RUNNING',
+          'instance_id' => 'some-diego-instance-id',
           'isolation_segment' => 'very-isolated',
           'details' => 'some-details',
           'usage' => {
