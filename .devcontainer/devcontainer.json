@@ -1,0 +1,35 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+{
+    "name": "Cloud Controller Dev Environment",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "codespace",
+    "runServices": [
+        "postgres",
+        "mariadb",
+        "uaa",
+        "minio",
+        "catsbroker",
+        "nginx"
+    ],
+    "workspaceFolder": "..",
+    "initializeCommand": ".devcontainer/library/initializeCommand.sh",
+    "onCreateCommand": ".devcontainer/library/onCreateCommand.sh",
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            // Set *default* container specific settings.json values on container create.
+            "settings": {},
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                "rebornix.ruby",
+                "ms-azuretools.vscode-docker",
+                "hbenl.vscode-test-explorer",
+                "connorshea.vscode-ruby-test-adapter",
+                "oderwat.indent-rainbow",
+                "2gua.rainbow-brackets"
+            ]
+        }
+    },
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": []
+}

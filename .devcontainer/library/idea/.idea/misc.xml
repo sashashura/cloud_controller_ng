@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" project-jdk-name="ruby-3.1.2-p20" project-jdk-type="RUBY_SDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="UnattendedHostPersistenceState">
+    <option name="openedFilesInfos">
+      <list>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/README.md" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="13701" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/app/controllers/v3/apps_controller.rb" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="11686" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/config/routes.rb" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="966" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/app/controllers/v3/mixins/service_permissions.rb" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="839" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/app/controllers/v3/service_instances_controller.rb" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/.idea/workspace.xml" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="44" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/.devcontainer/library/onCreateCommand.sh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="35" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/.devcontainer/library/initializeCommand.sh" />
+        </OpenedFileInfo>
+      </list>
+    </option>
+  </component>
+</project>

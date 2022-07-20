@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+  # Dev Container
+  codespace:
+    container_name: codespace
+    build: 
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+    restart: unless-stopped
+    command: /bin/sh -c "while sleep 1000; do :; done"  
+    volumes:
+      - ..:/workspace:cached
+      - /var/run/docker.sock:/var/run/docker.sock 
+    networks:
+      - codespace
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+  # Postgres
+  postgres:
+    container_name: postgres
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: supersecret
+    networks:
+      - codespace
+    restart: unless-stopped
+  # Postgres
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.3
+    environment:
+      MARIADB_ROOT_PASSWORD: supersecret
+    networks:
+      - codespace
+    restart: unless-stopped
+  # UAA
+  uaa:
+    container_name: uaa
+    build: 
+      context: library/uaa
+      dockerfile: Dockerfile
+    networks:
+      - codespace
+    restart: unless-stopped
+  # Minio
+  minio:
+    container_name: minio
+    image: minio/minio:latest
+    command: minio server --address :9001 /data
+    networks:
+      - codespace
+    restart: unless-stopped
+  # CATS Configurable Service Broker
+  catsbroker:
+    container_name: catsbroker
+    build: 
+      context: library/catsbroker
+      dockerfile: Dockerfile
+    networks:
+      - codespace
+    restart: unless-stopped
+  # Nginx
+  nginx:
+    container_name: nginx
+    build: 
+      context: ./library/nginx
+      dockerfile: Dockerfile
+      args:
+        ENABLED_MODULES: nginx_upload_module
+    networks:
+      - codespace
+    volumes:
+    - ./library/nginx/conf:/usr/local/nginx/conf:ro
+    - ../tmp:/tmp:cached
+networks:
+  codespace:

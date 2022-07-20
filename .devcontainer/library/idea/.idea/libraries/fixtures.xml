@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="fixtures">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/bad.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/express-app.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/empty.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/good.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/good_relative_paths.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/bad_relative_paths.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

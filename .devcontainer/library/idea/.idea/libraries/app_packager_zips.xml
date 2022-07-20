@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="app_packager_zips">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/broken-file-symlink.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/undeletable_dir.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/many_dirs.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/special_character_names.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/unreadable_dir.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/untraversable_dir.zip!/" />
+      <root url="jar://$PROJECT_DIR$/spec/fixtures/app_packager_zips/bad_directory_permissions.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
