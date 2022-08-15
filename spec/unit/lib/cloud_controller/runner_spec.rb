@@ -24,7 +24,7 @@ module VCAP::CloudController
 
     subject do
       Runner.new(argv + ['-c', config_file.path]).tap do |r|
-        allow(r).to receive(:start_thin_server)
+        allow(r).to receive(:start_puma_server)
       end
     end
 
@@ -95,17 +95,23 @@ module VCAP::CloudController
       end
 
       it 'starts thin server on set up bind address' do
-        allow(subject).to receive(:start_thin_server).and_call_original
+        allow(subject).to receive(:start_puma_server).and_call_original
         expect_any_instance_of(VCAP::HostSystem).to receive(:local_ip).and_return('some_local_ip')
-        thin_server = double(:thin_server).as_null_object
-        expect(Thin::Server).to receive(:new).with('some_local_ip', 8181, { signals: false }).and_return(thin_server)
+        allow_any_instance_of(Puma::Launcher).to receive(:run)
         subject.run!
-        expect(subject.instance_variable_get(:@thin_server)).to eq(thin_server)
+        puma_launcher = subject.instance_variable_get(:@puma_launcher)
+        expect(puma_launcher.config.final_options[:binds]).to eq ['tcp://some_local_ip:8181']
       end
 
-      it 'sets up varz updates' do
-        expect(periodic_updater).to receive(:setup_updates)
+      it 'sets up metrics updates in the after_worker_fork' do
+        allow(subject).to receive(:start_puma_server).and_call_original
+        allow_any_instance_of(Puma::Launcher).to receive(:run)
         subject.run!
+        puma_launcher = subject.instance_variable_get(:@puma_launcher)
+
+        expect(periodic_updater).to receive(:setup_updates)
+        allow(Thread).to receive(:new).and_yield
+        puma_launcher.config.final_options[:after_worker_fork].call
       end
 
       it 'logs an error if an exception is raised' do

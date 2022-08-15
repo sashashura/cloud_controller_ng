@@ -177,7 +177,7 @@ module VCAP::CloudController
         user_config.before_fork {
           @db.disconnect
         }
-        user_config.after_worker_boot {
+        user_config.after_worker_fork {
           Thread.new do
             EM.run do
               gather_periodic_metrics
